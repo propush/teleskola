@@ -1,0 +1,52 @@
+plugins {
+    id 'java'
+    id 'org.jetbrains.kotlin.jvm' version '1.5.0'
+    id 'application'
+}
+
+group 'com.skolopendra'
+version '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    implementation "org.jetbrains.kotlin:kotlin-stdlib"
+    implementation("ch.qos.logback:logback-classic:1.2.3")
+    implementation("org.jetbrains.kotlinx:kotlinx-cli:0.3.2")
+    implementation("com.fasterxml.jackson.core:jackson-databind:2.12.3")
+    implementation("com.fasterxml.jackson.core:jackson-core:2.12.3")
+    implementation("com.fasterxml.jackson.module:jackson-module-kotlin:2.12.3")
+
+    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.7.0'
+    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.7.0'
+    testImplementation 'org.mockito.kotlin:mockito-kotlin:3.2.0'
+}
+
+test {
+    useJUnitPlatform()
+}
+
+tasks.withType(org.jetbrains.kotlin.gradle.tasks.KotlinCompile).all {
+    kotlinOptions {
+        jvmTarget = "1.8"
+    }
+}
+
+tasks.jar {
+    archiveFileName.set("teleskola.jar")
+    from(sourceSets.main.output)
+
+    dependsOn(configurations.runtimeClasspath)
+    from {
+        configurations.compileClasspath.collect { it.isDirectory() ? it : zipTree(it) }
+    }
+    manifest {
+        attributes["Main-Class"] = "com.skolopendra.teleskola.TeleSkolaKt"
+    }
+}
+
+application {
+    mainClassName = "com.skolopendra.teleskola.TeleSkolaKt"
+}

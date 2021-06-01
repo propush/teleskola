@@ -1,0 +1,46 @@
+{
+  "tempDir": "teleskola",
+  "telemetryInterval": 2,
+  "video": {
+    "dimensions": {"x": 100, "y": 720}
+  },
+  "generalFieldSettings": {
+    "fontSize": 15,
+    "color": {
+      "background": "white",
+      "foreground": "black"
+    }
+  },
+  "telemetryFields": [
+    {
+      "name": "GPS",
+      "position": {"x": 10, "y": 0},
+      "visible": false
+    },
+    {
+      "name": "GSpd(kmh)",
+      "visibleName": "Spd",
+      "position": {"x": 10, "y": 20}
+    },
+    {
+      "name": "Alt(m)",
+      "visibleName": "Alt",
+      "position": {"x": 10, "y": 40}
+    },
+    {
+      "name": "VSpd(m/s)",
+      "visibleName": "VSpd",
+      "position": {"x": 10, "y": 60}
+    },
+    {
+      "name": "Date",
+      "visibleName": null,
+      "position": {"x": 10, "y": 660}
+    },
+    {
+      "name": "Time",
+      "visibleName": null,
+      "position": {"x": 10, "y": 680}
+    }
+  ]
+}
