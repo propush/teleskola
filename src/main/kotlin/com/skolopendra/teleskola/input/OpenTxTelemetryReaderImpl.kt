@@ -47,7 +47,7 @@ class OpenTxTelemetryReaderImpl(
         }
 
     private fun readValues(data: String): List<TelemetryValue> =
-        data.split(',').mapIndexed { index, s -> dataToTelemetryValue(index, s) }
+        data.split(',').mapIndexed(::dataToTelemetryValue)
 
     private fun dataToTelemetryValue(index: Int, data: String): TelemetryValue {
         val telemetryField = headerHolder[index]
